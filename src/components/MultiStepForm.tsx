@@ -198,30 +198,30 @@ const MultiStepForm: React.FC = () => {
         {/* مرحله 2: هدایای VIP */}
         {currentStep === 2 && (
           <div className="step-content">
-            <h2>هدایای VIP</h2>
+            <h2>هدایای کاربران وفادار</h2>
             
             <div className="form-group">
-              <label>مقدار:</label>
+              <label>مبلغ کل خرید:</label>
               <input 
                 type="number" 
-                placeholder="مقدار هدیه را وارد کنید"
+                placeholder="مبلغ کل خرید را وارد کنید"
                 value={formData.giftAmount}
                 onChange={(e) => setFormData({...formData, giftAmount: e.target.value})}
               />
             </div>
             
             <div className="form-group">
-              <label>تعداد:</label>
+              <label>تعداد خرید:</label>
               <input 
                 type="number" 
-                placeholder="تعداد هدایا را وارد کنید"
+                placeholder="تعداد دفعات خرید را وارد کنید"
                 value={formData.giftCount}
                 onChange={(e) => setFormData({...formData, giftCount: e.target.value})}
               />
             </div>
             
             <div className="form-group">
-              <label>توضیحات:</label>
+              <label>هدیه:</label>
               <textarea 
                 placeholder="توضیحات کامل هدیه را وارد کنید"
                 value={formData.giftDescription}
