@@ -1,0 +1,569 @@
+/* Modern Business Card Styles - مطابق نمونه */
+.modern-business-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 24px;
+  margin: 16px;
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.08),
+    0 4px 10px rgba(0, 0, 0, 0.03);
+  border: 1px solid #f1f5f9;
+  transition: all 0.3s ease;
+  width: 380px;
+  max-width: 100%;
+  font-family: 'IRANYekan', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  direction: rtl;
+  text-align: right;
+  position: relative;
+  overflow: hidden;
+}
+
+.modern-business-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 12px 35px rgba(0, 0, 0, 0.12),
+    0 6px 15px rgba(0, 0, 0, 0.06);
+}
+
+/* Header Section */
+.card-header-new {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.business-info {
+  flex: 1;
+  text-align: right;
+}
+
+.business-name {
+  color: #1e293b;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+}
+
+.category-text {
+  display: block;
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.location-text {
+  display: block;
+  color: #94a3b8;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.discount-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.discount-badge {
+  padding: 6px 14px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.discount-badge.primary {
+  background: #dbeafe;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+}
+
+.discount-badge.secondary {
+  background: #dcfce7;
+  color: #16a34a;
+  border: 1px solid #bbf7d0;
+}
+
+/* Conditional Offer */
+.conditional-offer {
+  background: #fef3e2;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 20px;
+  border: 1px solid #fed7aa;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.discount-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.offer-text {
+  color: #ea580c;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 600;
+  text-align: right;
+  flex: 1;
+}
+
+/* VIP Section */
+.vip-section-new {
+  background: #f3f4f6;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #e5e7eb;
+}
+
+.vip-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.vip-crown {
+  font-size: 18px;
+}
+
+.vip-title {
+  font-weight: 700;
+  color: #7c3aed;
+  font-size: 16px;
+}
+
+.vip-experiences {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vip-experience {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: right;
+}
+
+.vip-stars {
+  display: flex;
+  gap: 2px;
+  min-width: fit-content;
+  order: 1;
+}
+
+.vip-star {
+  color: #7c3aed;
+  font-size: 16px;
+}
+
+.vip-text {
+  color: #374151;
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 500;
+  flex: 1;
+  order: 2;
+}
+
+/* Rating Section */
+.rating-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+.rating-value-new {
+  color: #64748b;
+  font-size: 16px;
+  font-weight: 600;
+  order: 2;
+}
+
+.stars-new {
+  display: flex;
+  gap: 2px;
+  order: 1;
+}
+
+.star {
+  font-size: 18px;
+}
+
+.star.full {
+  color: #fbbf24;
+}
+
+.star.half {
+  color: #fbbf24;
+  opacity: 0.6;
+}
+
+.star.empty {
+  color: #e5e7eb;
+}
+
+/* Package Progress */
+.package-progress {
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  border: none;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.progress-title {
+  font-weight: 600;
+  color: #374151;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.progress-months {
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background-color: #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: #eab308;
+  transition: width 0.8s ease;
+  border-radius: 10px;
+}
+
+.progress-status {
+  text-align: center;
+  font-size: 14px;
+  color: #374151;
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .modern-business-card {
+    width: 100%;
+    margin: 12px 0;
+    padding: 20px;
+  }
+  
+  .business-name {
+    font-size: 18px;
+  }
+  
+  .card-header-new {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  
+  .discount-badges {
+    align-items: flex-start;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .modern-business-card {
+    padding: 16px;
+  }
+  
+  .business-name {
+    font-size: 16px;
+  }
+  
+  .vip-experience {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  
+  .vip-stars {
+    order: 1;
+  }
+  
+  .vip-text {
+    order: 2;
+  }
+}
+
+/* Rating Section */
+.rating-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 20px 0;
+  padding: 12px;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.stars-new {
+  display: flex;
+  gap: 2px;
+}
+
+.star {
+  font-size: 18px;
+}
+
+.star.full {
+  color: #fbbf24;
+}
+
+.star.half {
+  color: #fbbf24;
+  opacity: 0.6;
+}
+
+.star.empty {
+  color: #e5e7eb;
+}
+
+.rating-value-new {
+  color: #64748b;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+
+
+/* Conditional Offer */
+.conditional-offer {
+  background: #fef3e2;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 20px;
+  border: 1px solid #fed7aa;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.conditional-offer .discount-icon {
+  font-size: 16px;
+}
+
+.conditional-offer p {
+  color: #ea580c;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* VIP Section */
+.vip-section-new {
+  background: #f3f4f6;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #e5e7eb;
+  position: relative;
+}
+
+.vip-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.vip-crown {
+  font-size: 18px;
+}
+
+.vip-title {
+  font-weight: 700;
+  color: #7c3aed;
+  font-size: 16px;
+}
+
+.vip-experiences {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vip-experience {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+}
+
+.vip-stars {
+  display: flex;
+  gap: 2px;
+  min-width: fit-content;
+}
+
+.vip-star {
+  color: #7c3aed;
+  font-size: 16px;
+}
+
+.vip-text {
+  color: #374151;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 500;
+  text-align: right;
+}
+
+/* Package Progress */
+.package-progress {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.progress-title {
+  font-weight: 600;
+  color: #374151;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.progress-title::before {
+  
+  font-size: 14px;
+}
+
+.progress-months {
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background-color: #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: #22c55e;
+  transition: width 0.8s ease;
+  border-radius: 10px;
+  position: relative;
+}
+
+.progress-status {
+  text-align: center;
+  font-size: 14px;
+  color: #374151;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .modern-business-card {
+    width: 100%;
+    margin: 12px 0;
+    padding: 20px;
+  }
+  
+  .business-title h2 {
+    font-size: 20px;
+  }
+  
+  .card-header-new {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  
+  .category-location {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .modern-business-card {
+    padding: 16px;
+  }
+  
+  .business-title h2 {
+    font-size: 18px;
+  }
+  
+  .vip-experience {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .vip-stars {
+    align-self: flex-start;
+  }
+}
+
+/* Animation for card entrance */
+.modern-business-card {
+  animation: cardEntrance 0.6s ease-out;
+}
+
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

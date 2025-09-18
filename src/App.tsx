@@ -1,25 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import BusinessCardsPage from './pages/BusinessCardsPage';
+import MultiStepForm from './components/MultiStepForm';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/business-cards" element={<BusinessCardsPage />} />
+          <Route path="/shops" element={<div style={{padding: '50px', textAlign: 'center', fontFamily: 'Segoe UI'}}>صفحه کارت فروشگاه‌ها - به زودی...</div>} />
+          <Route path="/discount-info" element={<MultiStepForm />} />
+          <Route path="/services" element={<div style={{padding: '50px', textAlign: 'center', fontFamily: 'Segoe UI'}}>صفحه کارت خدمات - به زودی...</div>} />
+          <Route path="/restaurants" element={<div style={{padding: '50px', textAlign: 'center', fontFamily: 'Segoe UI'}}>صفحه کارت رستوران‌ها - به زودی...</div>} />
+          <Route path="/professionals" element={<div style={{padding: '50px', textAlign: 'center', fontFamily: 'Segoe UI'}}>صفحه کارت متخصصان - به زودی...</div>} />
+          <Route path="/education" element={<div style={{padding: '50px', textAlign: 'center', fontFamily: 'Segoe UI'}}>صفحه کارت آموزشی - به زودی...</div>} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
