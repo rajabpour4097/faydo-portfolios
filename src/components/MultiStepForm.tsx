@@ -314,39 +314,6 @@ const MultiStepForm: React.FC = () => {
                 </div>
               </div>
 
-              {/* فریم سه ستاره */}
-              <div className="vip-frame">
-                <div className="frame-header">
-                  <span className="stars">⭐⭐⭐</span>
-                  <h3>طلایی</h3>
-                </div>
-                <div className="features-list">
-                  <label className="checkbox-label">
-                    <input 
-                      type="checkbox"
-                      checked={formData.threeStarFeatures.includes('personal')}
-                      onChange={(e) => handleFeatureChange('three', 'personal', e.target.checked)}
-                    />
-                    مشاور شخصی
-                  </label>
-                  <label className="checkbox-label">
-                    <input 
-                      type="checkbox"
-                      checked={formData.threeStarFeatures.includes('events')}
-                      onChange={(e) => handleFeatureChange('three', 'events', e.target.checked)}
-                    />
-                    دعوت به رویدادها
-                  </label>
-                  <label className="checkbox-label">
-                    <input 
-                      type="checkbox"
-                      checked={formData.threeStarFeatures.includes('premium')}
-                      onChange={(e) => handleFeatureChange('three', 'premium', e.target.checked)}
-                    />
-                    سرویس پریمیم
-                  </label>
-                </div>
-              </div>
             </div>
 
             <div className="form-actions">
