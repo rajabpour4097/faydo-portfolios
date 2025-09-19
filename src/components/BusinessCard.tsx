@@ -95,26 +95,6 @@ const BusinessCard: React.FC<BusinessCardProps> = ({
         <span className="offer-text">{conditionalOffer}</span>
       </div>
 
-      {/* VIP Experiences */}
-      <div className="vip-section-new">
-        <div className="vip-header">
-          <span className="vip-crown">👑</span>
-          <span className="vip-title">تجربیات VIP</span>
-        </div>
-        <div className="vip-experiences">
-          {vipExperiences.map((exp, index) => (
-            <div key={index} className="vip-experience">
-              <div className="vip-stars">
-                {Array.from({ length: exp.stars }, (_, i) => (
-                  <span key={i} className="vip-star">★</span>
-                ))}
-              </div>
-              <span className="vip-text">{exp.experience}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
       {/* Rating Section */}
       <div className="rating-section">
         <span className="rating-value-new">{rating}/5.0</span>
@@ -123,24 +103,6 @@ const BusinessCard: React.FC<BusinessCardProps> = ({
         </div>
       </div>
 
-      {/* Package Progress */}
-      <div className="package-progress">
-        <div className="progress-header">
-          <span className="progress-title">📅 زمان بسته</span>
-          <span className="progress-months">
-            {packageInfo.totalMonths - packageInfo.remainingMonths}/{packageInfo.totalMonths} ماه باقی‌مانده
-          </span>
-        </div>
-        <div className="progress-bar-container">
-          <div 
-            className="progress-bar-fill" 
-            style={{ width: `${progressPercentage}%` }}
-          ></div>
-        </div>
-        <div className="progress-status">
-          {packageInfo.remainingMonths === 0 ? 'این ماه منقضی می‌شود' : `${packageInfo.remainingMonths} ماه باقی‌مانده`}
-        </div>
-      </div>
     </div>
   );
 };
