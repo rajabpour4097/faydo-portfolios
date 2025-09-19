@@ -97,7 +97,6 @@ const BusinessCard: React.FC<BusinessCardProps> = ({
 
       {/* Rating Section */}
       <div className="rating-section">
-        <span className="rating-value-new">{rating}/5.0</span>
         <div className="stars-new">
           {renderStars(rating)}
         </div>

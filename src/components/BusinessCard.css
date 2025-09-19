@@ -90,11 +90,11 @@
 
 /* Conditional Offer */
 .conditional-offer {
-  background: #fef3e2;
+  background: #ffff;
   border-radius: 16px;
   padding: 16px;
   margin-bottom: 20px;
-  border: 1px solid #fed7aa;
+  border: 1px solid #ffff;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -107,7 +107,7 @@
 
 .offer-text {
   color: #ea580c;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.5;
   font-weight: 600;
   text-align: right;
@@ -327,9 +327,9 @@
   gap: 8px;
   margin: 20px 0;
   padding: 12px;
-  background: #f8fafc;
+  background: #ffff;
   border-radius: 12px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #ffff;
 }
 
 .stars-new {
@@ -364,11 +364,11 @@
 
 /* Conditional Offer */
 .conditional-offer {
-  background: #fef3e2;
+  background: #ffff;
   border-radius: 16px;
   padding: 16px;
   margin-bottom: 20px;
-  border: 1px solid #fed7aa;
+  border: 1px solid #ffff;
   text-align: center;
   display: flex;
   align-items: center;
@@ -381,8 +381,8 @@
 }
 
 .conditional-offer p {
-  color: #ea580c;
-  font-size: 14px;
+  color: #f7f9f7;
+  font-size: 8px;
   line-height: 1.6;
   margin: 0;
   font-weight: 600;
