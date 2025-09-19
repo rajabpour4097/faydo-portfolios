@@ -250,7 +250,7 @@ const MultiStepForm: React.FC = () => {
               <div className="vip-frame">
                 <div className="frame-header">
                   <span className="star">⭐</span>
-                  <h3>پایه</h3>
+                  <h3>VIP</h3>
                 </div>
                 <div className="features-list">
                   <label className="checkbox-label">
@@ -284,7 +284,7 @@ const MultiStepForm: React.FC = () => {
               <div className="vip-frame">
                 <div className="frame-header">
                   <span className="stars">⭐⭐</span>
-                  <h3>نقره‌ای</h3>
+                  <h3>+VIP</h3>
                 </div>
                 <div className="features-list">
                   <label className="checkbox-label">

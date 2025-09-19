@@ -88,21 +88,30 @@
   border: 1px solid #bbf7d0;
 }
 
+/* Offer and Rating Container */
+.offer-rating-container {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  align-items: stretch;
+}
+
 /* Conditional Offer */
 .conditional-offer {
-  background: #ffff;
+  background: #ffffff;
   border-radius: 16px;
   padding: 16px;
-  margin-bottom: 20px;
-  border: 1px solid #ffff;
+  border: 1px solid #e5e7eb;
   display: flex;
   align-items: center;
   gap: 8px;
+  flex: 1;
 }
 
 .discount-icon {
   font-size: 18px;
   flex-shrink: 0;
+  color: #3b82f6;
 }
 
 .offer-text {
@@ -179,12 +188,13 @@
 .rating-section {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin: 20px 0;
-  padding: 0;
-  background: transparent;
-  border: none;
-  border-radius: 0;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  flex: 1;
 }
 
 .rating-value-new {
@@ -378,6 +388,7 @@
 
 .conditional-offer .discount-icon {
   font-size: 16px;
+  color: #3b82f6;
 }
 
 .conditional-offer p {
@@ -531,6 +542,11 @@
   .category-location {
     width: 100%;
   }
+  
+  .offer-rating-container {
+    flex-direction: column;
+    gap: 12px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -549,6 +565,11 @@
   
   .vip-stars {
     align-self: flex-start;
+  }
+  
+  .offer-rating-container {
+    flex-direction: column;
+    gap: 8px;
   }
 }
 

@@ -89,16 +89,19 @@ const BusinessCard: React.FC<BusinessCardProps> = ({
         </div>
       </div>
 
-      {/* Conditional Offer */}
-      <div className="conditional-offer">
-        <span className="discount-icon">🎁</span>
-        <span className="offer-text">{conditionalOffer}</span>
-      </div>
+      {/* Offer and Rating Container */}
+      <div className="offer-rating-container">
+        {/* Rating Section */}
+        <div className="rating-section">
+          <div className="stars-new">
+            {renderStars(rating)}
+          </div>
+        </div>
 
-      {/* Rating Section */}
-      <div className="rating-section">
-        <div className="stars-new">
-          {renderStars(rating)}
+        {/* Conditional Offer */}
+        <div className="conditional-offer">
+          <span className="discount-icon">🎁</span>
+          <span className="offer-text">{conditionalOffer}</span>
         </div>
       </div>
 
