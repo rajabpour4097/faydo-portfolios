@@ -1,4 +1,4 @@
-.wizard{max-width:680px;margin:24px auto;padding:16px}
+.wizard{max-width:476px;margin:24px auto;padding:16px}
 .wizard-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
 .wizard .link{background:none;border:none;color:#3b82f6;cursor:pointer}
 .slides{position:relative;overflow:hidden;min-height:360px}
