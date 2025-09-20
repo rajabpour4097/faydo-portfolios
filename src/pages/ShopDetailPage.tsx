@@ -11,12 +11,19 @@ const Star: React.FC<{ filled: boolean; onClick?: () => void }> = ({ filled, onC
 
 const average = (arr: number[]) => (arr.length ? (arr.reduce((a, b) => a + b, 0) / arr.length) : 0);
 
+const renderStars = (value: number) => {
+  const full = Math.floor(value);
+  const hasHalf = value % 1 >= 0.5;
+  const nodes: React.ReactNode[] = [];
+  for (let i = 0; i < full; i++) nodes.push(<span key={`f${i}`} className="star full">★</span>);
+  if (hasHalf && full < 5) nodes.push(<span key="h" className="star half">★</span>);
+  for (let i = nodes.length; i < 5; i++) nodes.push(<span key={`e${i}`} className="star empty">☆</span>);
+  return nodes;
+};
+
 const ShopDetailPage: React.FC = () => {
   const { id } = useParams();
-  const initialShop = useMemo(() => {
-    if (id) return shops.find(s => s.id === id) as Shop | undefined;
-    return shops[0]; // fallback to first shop when used at /shops
-  }, [id]);
+  const initialShop = useMemo(() => (id ? shops.find(s => s.id === id) : shops[0]) as Shop | undefined, [id]);
   const [shop, setShop] = useState<Shop | undefined>(initialShop);
   const [myRating, setMyRating] = useState<number>(0);
   const [myComment, setMyComment] = useState<string>('');
@@ -32,73 +39,75 @@ const ShopDetailPage: React.FC = () => {
 
   const avg = average(shop.ratings);
 
-  const renderStars = (value: number) => {
-    const stars: React.ReactNode[] = [];
-    const full = Math.floor(value);
-    const hasHalf = value % 1 >= 0.5;
-    for (let i = 0; i < full; i++) stars.push(<span key={`s${i}`} className="star full">★</span>);
-    if (hasHalf && full < 5) stars.push(<span key="half" className="star half">★</span>);
-    for (let i = stars.length; i < 5; i++) stars.push(<span key={`e${i}`} className="star empty">☆</span>);
-    return stars;
-  };
-
   const submitRating = (r: number) => {
     setMyRating(r);
-    setShop(prev => prev ? { ...prev, ratings: [...prev.ratings, r] } : prev);
+    setShop(prev => (prev ? { ...prev, ratings: [...prev.ratings, r] } : prev));
   };
 
   const submitComment = () => {
     if (!myComment.trim()) return;
     const newComment: ShopComment = { id: 'c' + (shop.comments.length + 1), user: 'شما', text: myComment.trim(), likes: 0, likedByMe: false };
-    setShop(prev => prev ? { ...prev, comments: [newComment, ...prev.comments] } : prev);
+    setShop(prev => (prev ? { ...prev, comments: [newComment, ...prev.comments] } : prev));
     setMyComment('');
   };
 
   const toggleLike = (cid: string) => {
-    setShop(prev => prev ? {
-      ...prev,
-      comments: prev.comments.map(c => c.id === cid ? { ...c, likedByMe: !c.likedByMe, likes: c.likes + (c.likedByMe ? -1 : 1) } : c)
-    } : prev);
+    setShop(prev => (prev ? { ...prev, comments: prev.comments.map(c => (c.id === cid ? { ...c, likedByMe: !c.likedByMe, likes: c.likes + (c.likedByMe ? -1 : 1) } : c)) } : prev));
   };
 
   return (
     <div className="shop-detail" dir="rtl">
-      <div className="header-row">
+      {/* Cover and profile */}
+      <div className="cover" style={{ backgroundImage: `url(${shop.coverUrl || ''})` }} />
+      <div className="topbar">
         <Link to="/shops" className="link">بازگشت</Link>
-        <h1>{shop.name}</h1>
+        <span className="badge tier">{shop.activePackage}</span>
+      </div>
+      <div className="profile">
+        {shop.logoUrl && <img className="avatar" src={shop.logoUrl} alt={shop.name} />}
+        <div className="who">
+          <h1 className="title">{shop.name}</h1>
+          <div className="subtitle">{shop.category}</div>
+          <div className="stars-inline">
+            <span className="stars-inline-row">{renderStars(avg)}</span>
+            <span className="rating-num">{avg.toFixed(1)}</span>
+          </div>
+        </div>
       </div>
 
-      {/* Hero card matching the sample screenshot */}
-      <div className="hero-card">
-        <div className="hero-header">
-          <div className="business-info">
-            <h2 className="business-name">{shop.name}</h2>
-            <div className="muted">{shop.category}</div>
-            <div className="muted subtle">{shop.locationText || ''}</div>
-          </div>
-          <div className="discount-badges">
-            {shop.discount && (
-              <div className="discount-badge primary">{shop.discount}</div>
-            )}
-            {shop.productDiscount && (
-              <div className="discount-badge secondary">{shop.productDiscount}</div>
-            )}
-          </div>
-        </div>
-        <div className="offer-rating">
-          <div className="offer">
-            {shop.conditionalOffer && (
-              <>
-                <span className="gift">🎁</span>
-                <span className="offer-text">{shop.conditionalOffer}</span>
-              </>
-            )}
-          </div>
-          <div className="stars-row">
-            {renderStars(avg)}
-          </div>
-        </div>
+      {/* Business info */}
+      <div className="biz-info">
+        <div className="info-item">📍 {shop.address}</div>
+        <div className="info-item">⏰ {shop.hours.start} — {shop.hours.end}</div>
+        <a className="info-item" href={`tel:${shop.phone}`}>📞 {shop.phone}</a>
+        {shop.website && (
+          <a className="info-item" href={shop.website} target="_blank" rel="noopener">🌐 وب‌سایت</a>
+        )}
       </div>
+
+      {/* Offers section */}
+      {shop.offers && shop.offers.length > 0 && (
+        <div className="section">
+          <h2 className="section-title">پیشنهادها</h2>
+          <div className="cards">
+            {shop.offers.map(o => (
+              <div className={`offer-card ${o.type}`} key={o.title}>
+                <div className="row-1">
+                  <div className="offer-title">{o.title}</div>
+                  <span className="chev">›</span>
+                </div>
+                {o.description && <div className="offer-desc">{o.description}</div>}
+                <div className="offer-meta">
+                  {o.expiresAt && <span className="expires">تا {new Date(o.expiresAt).toLocaleDateString('fa-IR')}</span>}
+                  {typeof o.rating === 'number' && <span className="mini-stars">{renderStars(o.rating)}</span>}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Main grid */}
       <div className="grid">
         <div className="info">
           <div className="row"><strong>دسته‌بندی:</strong> {shop.category}</div>
@@ -110,7 +119,6 @@ const ShopDetailPage: React.FC = () => {
             <MapContainer center={[shop.location.lat, shop.location.lng]} zoom={14} scrollWheelZoom style={{ height: 260, width: '100%', borderRadius: 12 }}>
               <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
               <Marker position={[shop.location.lat, shop.location.lng]} icon={L.icon({ iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png', shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png', iconAnchor: [12, 41] })} />
-              {/* Open Google Maps when clicking on the map */}
               {(() => {
                 const OpenGMapsOnClick: React.FC = () => {
                   useMapEvents({
@@ -140,13 +148,44 @@ const ShopDetailPage: React.FC = () => {
           </ul>
           <div className="rate">
             <div>امتیاز شما:</div>
-            {[1,2,3,4,5].map(n => (
+            {[1, 2, 3, 4, 5].map(n => (
               <Star key={n} filled={n <= (myRating || Math.round(avg))} onClick={() => submitRating(n)} />
             ))}
+          </div>
+          {shop.satisfaction && (
+            <div className="satisfaction">
+              <div className="bar"><span>Discounts</span><div className="track"><div className="fill" style={{ width: `${Math.round(shop.satisfaction.discounts * 100)}%` }} /></div></div>
+              <div className="bar"><span>Gifts</span><div className="track"><div className="fill orange" style={{ width: `${Math.round(shop.satisfaction.gifts * 100)}%` }} /></div></div>
+              <div className="bar"><span>VIP</span><div className="track"><div className="fill purple" style={{ width: `${Math.round(shop.satisfaction.vip * 100)}%` }} /></div></div>
+            </div>
+          )}
+          {typeof shop.daysRemaining === 'number' && (
+            <div className="urgency">{shop.daysRemaining} روز تا پایان پکیج</div>
+          )}
+          <div className="ctas">
+            <button className="btn primary">🎟️ استفاده از تخفیف</button>
+            <button className="btn ghost">👑 درخواست VIP</button>
+            <button className="btn ghost">🔔 دنبال کردن</button>
+            <button className="btn ghost">❤️ علاقه‌مندی</button>
           </div>
         </div>
       </div>
 
+      {/* Media gallery */}
+      {shop.media && shop.media.length > 0 && (
+        <div className="section">
+          <h2 className="section-title">رسانه</h2>
+          <div className="media-grid">
+            {shop.media.map(m => (
+              <div className="media-item" key={m.id}>
+                {m.type === 'image' ? <img src={m.url} alt="media" /> : <video src={m.url} controls />}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Comments */}
       <div className="comments">
         <h2>نظرات کاربران</h2>
         <div className="new-comment">

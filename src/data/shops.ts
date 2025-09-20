@@ -15,6 +15,8 @@ export interface Shop {
   phone: string;
   address: string;
   locationText?: string; // e.g., مرکز شهر
+  website?: string;
+  instagram?: string;
   province?: string;
   city?: string;
   hours: { start: string; end: string };
@@ -27,6 +29,13 @@ export interface Shop {
   discount?: string; // e.g., ۱۵٪ تخفیف
   productDiscount?: string; // e.g., پیتزا ۲۵٪ تخفیف
   conditionalOffer?: string; // e.g., سفارش ۵ وعده غذا ...
+  coverUrl?: string;
+  logoUrl?: string;
+  offers?: Array<{ type: 'discount' | 'gift' | 'vip'; title: string; description?: string; expiresAt?: string; rating?: number }>;
+  media?: Array<{ id: string; type: 'image' | 'video'; url: string }>;
+  badges?: string[]; // e.g., ['VIP+ Partner','Best Rated']
+  daysRemaining?: number; // for urgency
+  satisfaction?: { discounts: number; gifts: number; vip: number }; // 0..1
 }
 
 export const shops: Shop[] = [
@@ -37,6 +46,8 @@ export const shops: Shop[] = [
     phone: '021-55550000',
     address: 'تهران، خیابان ولیعصر، کوچه گلستان، پلاک ۱۲',
     locationText: 'مرکز شهر',
+    website: 'https://example.com',
+    instagram: 'https://instagram.com/example',
     province: 'تهران',
     city: 'تهران',
     hours: { start: '10:00', end: '23:30' },
@@ -53,6 +64,21 @@ export const shops: Shop[] = [
     discount: '۱۵٪ تخفیف',
     productDiscount: 'پیتزا ۲۵٪ تخفیف',
     conditionalOffer: 'سفارش ۵ وعده غذا یا خرید بالای ۱۵۰ دلار، تیرامیسو رایگان',
+    coverUrl: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200&auto=format&fit=crop',
+    logoUrl: 'https://images.unsplash.com/photo-1559628171-2f8a47b27e86?q=80&w=140&auto=format&fit=crop',
+    offers: [
+      { type: 'discount', title: '۱۵٪ روی کل سفارش', description: 'روی کل فاکتور', expiresAt: '2025-12-31', rating: 4.5 },
+      { type: 'gift', title: 'تیرامیسو رایگان', description: 'با خرید بالای ۱۵۰$', expiresAt: '2025-10-15', rating: 4.2 },
+      { type: 'vip', title: 'VIP Basic', description: 'دسر رایگان برای اعضا', rating: 4.8 },
+    ],
+    media: [
+      { id: 'm1', type: 'image', url: 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=600&auto=format&fit=crop' },
+      { id: 'm2', type: 'image', url: 'https://images.unsplash.com/photo-1544025162-4b6e04a1d7a7?q=80&w=600&auto=format&fit=crop' },
+      { id: 'm3', type: 'image', url: 'https://images.unsplash.com/photo-1604908176997-4313b5d3b6b6?q=80&w=600&auto=format&fit=crop' },
+    ],
+    badges: ['VIP+ Partner','Best Rated'],
+    daysRemaining: 9,
+    satisfaction: { discounts: 0.76, gifts: 0.64, vip: 0.88 },
   },
   {
     id: '2',
