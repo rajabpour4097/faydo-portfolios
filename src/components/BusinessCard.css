@@ -633,3 +633,22 @@
     transform: translateY(0) scale(1);
   }
 }
+
+/* Ultra-mobile tuning: iPhone 16 / Galaxy S22 widths */
+@media (max-width: 430px) {
+  .modern-business-card { padding: 12px; border-radius: 18px; }
+  .card-header-new { gap: 10px; }
+  .business-name { font-size: 17px; }
+  .category-text { font-size: 13px; }
+  .location-text { font-size: 12px; }
+
+  /* Keep rating and offer in one row, compact */
+  .offer-rating-container { flex-direction: row; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: nowrap; }
+  .offer-rating-container .rating-section { gap: 4px; }
+  .offer-rating-container .star { font-size: 16px; }
+
+  /* Override previous width:90% and tighten offer area */
+  .offer-rating-container .conditional-offer { width: auto; max-width: 52%; flex: 0 1 50%; min-width: 128px; gap: 5px; }
+  .offer-rating-container .discount-icon { font-size: 12px; margin-left: 3px; }
+  .offer-rating-container .offer-text { font-size: 12px; max-inline-size: 15ch; max-width: 15ch; line-height: 1.3; -webkit-line-clamp: 2; line-clamp: 2; }
+}
