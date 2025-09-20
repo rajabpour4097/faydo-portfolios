@@ -1,0 +1,19 @@
+.wizard{max-width:680px;margin:24px auto;padding:16px}
+.wizard-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.wizard .link{background:none;border:none;color:#3b82f6;cursor:pointer}
+.slides{position:relative;overflow:hidden;min-height:360px}
+.slide{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:16px;box-shadow:0 8px 24px rgba(0,0,0,.04)}
+.slides.next .slide{animation:slideInNext .28s ease}
+.slides.back .slide{animation:slideInBack .28s ease}
+@keyframes slideInNext{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slideInBack{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:translateX(0)}}
+.label{display:block;margin:8px 0 6px;color:#374151;font-weight:600}
+.input,.select{width:100%;padding:12px 14px;border:1.5px solid #e5e7eb;border-radius:12px;font-family:inherit}
+.row{display:flex;gap:12px}
+.col{flex:1}
+.actions{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}
+.actions.spaced{justify-content:space-between}
+.btn{background:#4f46e5;border:none;color:#fff;padding:10px 16px;border-radius:10px;cursor:pointer}
+.btn.secondary{background:#64748b}
+.map-placeholder{height:220px;border-radius:12px;border:1.5px dashed #cbd5e1;background:#f8fafc;display:flex;align-items:center;justify-content:center;color:#64748b;margin:8px 0}
+.summary{background:#f8fafc;border:1px solid #e5e7eb;padding:12px;border-radius:12px}

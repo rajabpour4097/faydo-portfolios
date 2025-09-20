@@ -1,0 +1,12 @@
+.register-page{max-width:760px;margin:24px auto;padding:12px}
+.register-header{display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:12px}
+.register-header .avatar{width:64px;height:64px;border-radius:20px;background:linear-gradient(135deg,#6ea8ff,#5b67f5);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:28px}
+.register-header h1{margin:4px 0 0;color:#0f172a}
+.register-header .subtitle{color:#64748b;margin:0}
+.register-card{background:#fff;border:1px solid #e5e7eb;border-radius:20px;padding:16px;box-shadow:0 10px 30px rgba(0,0,0,.06)}
+.form-row{margin:10px 0}
+.label{display:block;margin-bottom:6px;color:#475569;font-weight:600}
+.input,.select{width:100%;padding:12px 14px;border:1.5px solid #e5e7eb;border-radius:12px;font-family:inherit}
+.checkbox{display:flex;align-items:center;gap:8px;margin:8px 0;color:#374151}
+.btn-primary{width:100%;background:#4f46e5;border:none;color:#fff;padding:12px 16px;border-radius:12px;font-weight:700;cursor:pointer;margin-top:8px}
+@media(max-width:480px){.register-page{padding:8px}.register-card{padding:12px}}

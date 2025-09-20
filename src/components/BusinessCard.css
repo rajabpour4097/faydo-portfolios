@@ -331,6 +331,7 @@
 @media (max-width: 480px) {
   .modern-business-card {
     padding: 14px;
+    margin: 3px 0; /* half the current 6px */
   }
   
   .business-name { font-size: 16px; }
@@ -575,7 +576,7 @@
 @media (max-width: 480px) {
   .modern-business-card {
     padding: 14px;
-    margin: 6px 0;
+    margin: 3px 0; /* reduced spacing */
   }
   
   .business-name {
@@ -636,7 +637,7 @@
 
 /* Ultra-mobile tuning: iPhone 16 / Galaxy S22 widths */
 @media (max-width: 430px) {
-  .modern-business-card { padding: 12px; border-radius: 18px; }
+  .modern-business-card { padding: 12px; border-radius: 18px; margin: 3px 0; }
   .card-header-new { gap: 10px; }
   .business-name { font-size: 17px; }
   .category-text { font-size: 13px; }

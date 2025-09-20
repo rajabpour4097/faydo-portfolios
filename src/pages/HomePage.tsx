@@ -26,11 +26,11 @@ const HomePage: React.FC = () => {
       path: '/discount-info'
     },
     {
-      id: 'restaurants',
-      title: 'کارت رستوران‌ها',
-      description: 'مشاهده کارت‌های رستوران‌ها و کافه‌ها',
-      icon: '🍽️',
-      path: '/restaurants'
+      id: 'signup',
+      title: 'ثبت نام',
+      description: 'مشاهده ثبت نام مشتری و کسب وکارها',
+      icon: '📝',
+      path: '/signup'
     },
     {
       id: 'professionals',
