@@ -31,6 +31,7 @@
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 20px;
+  gap: 16px;
 }
 
 .business-info {
@@ -65,7 +66,8 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  align-items: flex-end;
+  align-items: flex-start;
+  flex-shrink: 0;
 }
 
 .discount-badge {
@@ -80,47 +82,68 @@
   background: #dbeafe;
   color: #1d4ed8;
   border: 1px solid #bfdbfe;
+  /* 30% smaller than base */
+  font-size: calc(12px * 0.8);
+  padding: calc(6px * 0.8) calc(14px * 0.8);
+  border-radius: calc(16px * 0.8);
 }
 
 .discount-badge.secondary {
   background: #dcfce7;
   color: #16a34a;
   border: 1px solid #bbf7d0;
+  /* 30% smaller than base */
+  font-size: calc(12px * 0.8);
+  padding: calc(6px * 0.8) calc(14px * 0.8);
+  border-radius: calc(16px * 0.8);
 }
 
 /* Offer and Rating Container */
 .offer-rating-container {
   display: flex;
-  gap: 12px;
-  margin-bottom: 20px;
-  align-items: stretch;
+  align-items: center;
+  justify-content: space-between; /* stars at right, offer at left */
+  gap: 10px;
+  margin: 6px 0 0 0; /* tighter like reference */
+  width: 100%;
 }
 
 /* Conditional Offer */
 .conditional-offer {
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 16px;
-  border: 1px solid #e5e7eb;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  border: none;
   display: flex;
   align-items: center;
-  gap: 8px;
-  flex: 1;
+  gap: 5px; /* 20% tighter */
+  flex: 0 1 45%; /* ~20% narrower footprint */
+  min-width: 140px;   /* allow a bit smaller */
+  max-width: 48%;
 }
 
 .discount-icon {
-  font-size: 18px;
+  font-size: 13px; /* -20% */
   flex-shrink: 0;
-  color: #3b82f6;
+  color: #3b82f6; /* blue like reference */
+  margin-left: 3px; /* space between icon and text in RTL */
 }
 
 .offer-text {
-  color: #ea580c;
-  font-size: 12px;
-  line-height: 1.5;
-  font-weight: 600;
+  color: #111827; /* nearly black like reference */
+  font-size: 11px; /* -~20% */
+  line-height: 1.3;
+  font-weight: 400;
   text-align: right;
-  flex: 1;
+  white-space: normal;
+  overflow-wrap: anywhere; /* break long words */
+  word-break: break-word;
+  display: -webkit-box;
+  line-clamp: 2; /* standard property */
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: 1 1 auto;
 }
 
 /* VIP Section */
@@ -188,13 +211,13 @@
 .rating-section {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 16px;
-  background: #ffffff;
-  border-radius: 16px;
-  border: 1px solid #e5e7eb;
-  flex: 1;
+  justify-content: flex-start; /* RTL: near the right edge of container */
+  gap: 4px;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  border: none;
+  flex: 0 0 auto;
 }
 
 .rating-value-new {
@@ -285,8 +308,8 @@
 @media (max-width: 768px) {
   .modern-business-card {
     width: 100%;
-    margin: 12px 0;
-    padding: 20px;
+    margin: 8px 0;
+    padding: 16px;
   }
   
   .business-name {
@@ -294,31 +317,25 @@
   }
   
   .card-header-new {
-    flex-direction: column;
-    gap: 12px;
+    flex-direction: row; /* keep name and discounts in one row */
     align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
   }
   
   .discount-badges {
     align-items: flex-start;
-    width: 100%;
   }
 }
 
 @media (max-width: 480px) {
   .modern-business-card {
-    padding: 16px;
+    padding: 14px;
   }
   
-  .business-name {
-    font-size: 16px;
-  }
+  .business-name { font-size: 16px; }
   
-  .vip-experience {
-    flex-direction: column;
-    gap: 8px;
-    align-items: flex-start;
-  }
+  .vip-experience { flex-direction: column; gap: 8px; align-items: flex-start; }
   
   .vip-stars {
     order: 1;
@@ -327,19 +344,26 @@
   .vip-text {
     order: 2;
   }
+  
+  /* Reduce offer width by 10% on mobile */
+  .conditional-offer {
+    width: 70%;
+    max-width: 70%;
+    align-self: flex-start;
+  }
 }
 
 /* Rating Section */
 .rating-section {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin: 20px 0;
-  padding: 12px;
-  background: #ffff;
-  border-radius: 12px;
-  border: 1px solid #ffff;
+  justify-content: flex-start;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  border: none;
 }
 
 .stars-new {
@@ -374,20 +398,20 @@
 
 /* Conditional Offer */
 .conditional-offer {
-  background: #ffff;
-  border-radius: 16px;
-  padding: 16px;
-  margin-bottom: 20px;
-  border: 1px solid #ffff;
-  text-align: center;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  border: none;
+  text-align: right;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
+  justify-content: flex-start;
+  gap: 5px; /* keep compact */
 }
 
 .conditional-offer .discount-icon {
-  font-size: 16px;
+  font-size: 13px; /* compact */
   color: #3b82f6;
 }
 
@@ -525,51 +549,72 @@
 @media (max-width: 768px) {
   .modern-business-card {
     width: 100%;
-    margin: 12px 0;
-    padding: 20px;
+    margin: 8px 0;
+    padding: 16px;
   }
   
-  .business-title h2 {
-    font-size: 20px;
+  .business-name {
+    font-size: 18px;
   }
   
   .card-header-new {
-    flex-direction: column;
-    gap: 12px;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: flex-start;
-  }
-  
-  .category-location {
-    width: 100%;
-  }
-  
-  .offer-rating-container {
-    flex-direction: column;
+    margin-bottom: 16px;
     gap: 12px;
+  }
+  
+  .offer-rating-container { flex-direction: row; gap: 10px; margin: 8px 0 0; }
+  
+  .conditional-offer, .rating-section {
+    padding: 12px;
   }
 }
 
 @media (max-width: 480px) {
   .modern-business-card {
-    padding: 16px;
+    padding: 14px;
+    margin: 6px 0;
   }
   
-  .business-title h2 {
-    font-size: 18px;
+  .business-name {
+    font-size: 16px;
   }
   
-  .vip-experience {
-    flex-direction: column;
-    gap: 8px;
+  .card-header-new {
+    margin-bottom: 14px;
+    gap: 10px;
   }
   
-  .vip-stars {
-    align-self: flex-start;
+  .discount-badge {
+    padding: 4px 10px;
+    font-size: 11px;
   }
   
   .offer-rating-container {
     flex-direction: column;
     gap: 8px;
+    margin-bottom: 14px;
+  }
+  
+  .conditional-offer, .rating-section {
+    padding: 10px;
+  }
+  
+  /* Reduce offer width by 10% on mobile */
+  .conditional-offer { width: 70%; max-width: 70%; }
+  
+  .offer-text {
+    font-size: 11px;
+  }
+  
+  .discount-icon {
+    font-size: 16px;
+  }
+  
+  .star {
+    font-size: 16px;
   }
 }
 
