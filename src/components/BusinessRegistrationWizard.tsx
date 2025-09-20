@@ -54,13 +54,10 @@ const BusinessRegistrationWizard: React.FC<Props> = ({ onExit }) => {
       </div>
 
       <div className={`slides ${direction}`}>
-        {/* Step 1: Address & hours & phone & category */}
+        {/* Step 1: hours & phone & category */}
         {step === 1 && (
           <div className="slide">
             <h2>اطلاعات کسب‌وکار</h2>
-            <label className="label">آدرس کسب‌وکار</label>
-            <input className="input" value={form.address} onChange={e => setForm({ ...form, address: e.target.value })} placeholder="آدرس" />
-
             <div className="row">
               <div className="col">
                 <label className="label">ساعت شروع</label>
@@ -86,7 +83,7 @@ const BusinessRegistrationWizard: React.FC<Props> = ({ onExit }) => {
           </div>
         )}
 
-        {/* Step 2: Map + province/city */}
+        {/* Step 2: Map + province/city + address */}
         {step === 2 && (
           <div className="slide">
             <h2>موقعیت روی نقشه و استان/شهر</h2>
@@ -120,6 +117,15 @@ const BusinessRegistrationWizard: React.FC<Props> = ({ onExit }) => {
                 </select>
               </div>
             </div>
+
+            <label className="label">آدرس کسب‌وکار</label>
+            <textarea
+              className="input"
+              rows={3}
+              value={form.address}
+              onChange={e => setForm({ ...form, address: e.target.value })}
+              placeholder="آدرس کامل (خیابان، پلاک، واحد)"
+            />
 
             <div className="actions spaced">
               <button className="btn secondary" onClick={goBack}>بازگشت</button>
