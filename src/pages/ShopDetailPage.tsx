@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { shops, Shop, ShopComment } from '../data/shops';
-import { MapContainer, TileLayer, Marker } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
 import './ShopDetailPage.css';
 
@@ -110,7 +110,23 @@ const ShopDetailPage: React.FC = () => {
             <MapContainer center={[shop.location.lat, shop.location.lng]} zoom={14} scrollWheelZoom style={{ height: 260, width: '100%', borderRadius: 12 }}>
               <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
               <Marker position={[shop.location.lat, shop.location.lng]} icon={L.icon({ iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png', shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png', iconAnchor: [12, 41] })} />
+              {/* Open Google Maps when clicking on the map */}
+              {(() => {
+                const OpenGMapsOnClick: React.FC = () => {
+                  useMapEvents({
+                    click(e) {
+                      const lat = e.latlng?.lat ?? shop.location.lat;
+                      const lng = e.latlng?.lng ?? shop.location.lng;
+                      const url = `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
+                      window.open(url, '_blank', 'noopener');
+                    },
+                  });
+                  return null;
+                };
+                return <OpenGMapsOnClick />;
+              })()}
             </MapContainer>
+            <div className="hint">برای باز کردن موقعیت در Google Maps روی نقشه کلیک کنید</div>
           </div>
         </div>
         <div className="package">
