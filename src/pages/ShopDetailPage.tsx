@@ -32,6 +32,16 @@ const ShopDetailPage: React.FC = () => {
 
   const avg = average(shop.ratings);
 
+  const renderStars = (value: number) => {
+    const stars: React.ReactNode[] = [];
+    const full = Math.floor(value);
+    const hasHalf = value % 1 >= 0.5;
+    for (let i = 0; i < full; i++) stars.push(<span key={`s${i}`} className="star full">★</span>);
+    if (hasHalf && full < 5) stars.push(<span key="half" className="star half">★</span>);
+    for (let i = stars.length; i < 5; i++) stars.push(<span key={`e${i}`} className="star empty">☆</span>);
+    return stars;
+  };
+
   const submitRating = (r: number) => {
     setMyRating(r);
     setShop(prev => prev ? { ...prev, ratings: [...prev.ratings, r] } : prev);
@@ -56,6 +66,38 @@ const ShopDetailPage: React.FC = () => {
       <div className="header-row">
         <Link to="/shops" className="link">بازگشت</Link>
         <h1>{shop.name}</h1>
+      </div>
+
+      {/* Hero card matching the sample screenshot */}
+      <div className="hero-card">
+        <div className="hero-header">
+          <div className="business-info">
+            <h2 className="business-name">{shop.name}</h2>
+            <div className="muted">{shop.category}</div>
+            <div className="muted subtle">{shop.locationText || ''}</div>
+          </div>
+          <div className="discount-badges">
+            {shop.discount && (
+              <div className="discount-badge primary">{shop.discount}</div>
+            )}
+            {shop.productDiscount && (
+              <div className="discount-badge secondary">{shop.productDiscount}</div>
+            )}
+          </div>
+        </div>
+        <div className="offer-rating">
+          <div className="offer">
+            {shop.conditionalOffer && (
+              <>
+                <span className="gift">🎁</span>
+                <span className="offer-text">{shop.conditionalOffer}</span>
+              </>
+            )}
+          </div>
+          <div className="stars-row">
+            {renderStars(avg)}
+          </div>
+        </div>
       </div>
       <div className="grid">
         <div className="info">
