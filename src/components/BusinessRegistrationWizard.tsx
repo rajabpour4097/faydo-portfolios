@@ -1,4 +1,6 @@
 import React, { useMemo, useState } from 'react';
+import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
+import L from 'leaflet';
 import iranProvinces, { Province } from '../data/iranProvinces';
 import './BusinessRegistrationWizard.css';
 
@@ -19,7 +21,7 @@ const BusinessRegistrationWizard: React.FC<Props> = ({ onExit }) => {
     phone: '',
     category: categories[0],
     lat: 35.6892,
-    lng: 51.3890,
+    lng: 51.389,
     province: '',
     city: '',
   });
@@ -31,6 +33,18 @@ const BusinessRegistrationWizard: React.FC<Props> = ({ onExit }) => {
 
   const goNext = () => { setDirection('next'); setStep(prev => ((prev + 1) > 3 ? 3 : (prev + 1)) as Step); };
   const goBack = () => { setDirection('back'); setStep(prev => ((prev - 1) < 1 ? 1 : (prev - 1)) as Step); };
+
+  // Custom map click handler component to update coordinates
+  const ClickHandler: React.FC = () => {
+    useMapEvents({
+      click(e) {
+        setForm(prev => ({ ...prev, lat: e.latlng.lat, lng: e.latlng.lng }));
+      },
+    });
+    return null;
+  };
+
+  const tehranCenter: [number, number] = [form.lat, form.lng];
 
   return (
     <div className="wizard" dir="rtl">
@@ -76,7 +90,20 @@ const BusinessRegistrationWizard: React.FC<Props> = ({ onExit }) => {
         {step === 2 && (
           <div className="slide">
             <h2>موقعیت روی نقشه و استان/شهر</h2>
-            <div className="map-placeholder">نقشه (نمایشی)</div>
+            <div className="map-wrapper">
+              <MapContainer center={tehranCenter} zoom={12} scrollWheelZoom style={{ height: 300, width: '100%', borderRadius: 12 }}>
+                <TileLayer
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                <Marker position={tehranCenter} icon={L.icon({ iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png', shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png', iconAnchor: [12, 41] })} />
+                <ClickHandler />
+              </MapContainer>
+              <div className="coords">
+                <span>عرض جغرافیایی: {form.lat.toFixed(6)}</span>
+                <span>طول جغرافیایی: {form.lng.toFixed(6)}</span>
+              </div>
+            </div>
             <div className="row">
               <div className="col">
                 <label className="label">استان</label>
@@ -111,6 +138,7 @@ const BusinessRegistrationWizard: React.FC<Props> = ({ onExit }) => {
               <p><strong>تلفن:</strong> {form.phone || '—'}</p>
               <p><strong>دسته‌بندی:</strong> {form.category}</p>
               <p><strong>استان/شهر:</strong> {form.province || '—'} {form.city ? `- ${form.city}` : ''}</p>
+              <p><strong>مختصات:</strong> {form.lat.toFixed(6)}, {form.lng.toFixed(6)}</p>
             </div>
             <div className="actions spaced">
               <button className="btn secondary" onClick={goBack}>بازگشت</button>

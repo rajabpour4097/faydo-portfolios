@@ -17,3 +17,7 @@
 .btn.secondary{background:#64748b}
 .map-placeholder{height:220px;border-radius:12px;border:1.5px dashed #cbd5e1;background:#f8fafc;display:flex;align-items:center;justify-content:center;color:#64748b;margin:8px 0}
 .summary{background:#f8fafc;border:1px solid #e5e7eb;padding:12px;border-radius:12px}
+
+/* Map styles */
+.map-wrapper{margin:8px 0}
+.coords{display:flex;gap:12px;justify-content:space-between;color:#475569;margin-top:6px;font-size:.9rem}

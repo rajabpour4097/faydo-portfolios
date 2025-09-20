@@ -55,16 +55,9 @@ const BusinessCard: React.FC<BusinessCardProps> = ({
     return stars;
   };
 
-  const progressPercentage = packageInfo.remainingMonths > 0 
-    ? ((packageInfo.totalMonths - packageInfo.remainingMonths) / packageInfo.totalMonths) * 100
-    : 100;
+  // Removed unused progressPercentage calculation.
 
-  const getProgressStatus = () => {
-    if (packageInfo.remainingMonths === 0) return 'تکمیل شده';
-    if (progressPercentage >= 75) return 'در حال انجام';
-    if (progressPercentage >= 50) return 'میانی';
-    return 'شروع شده';
-  };
+  // Note: progress status function removed as it wasn't used; can be reintroduced if needed in UI.
 
   return (
     <div className="modern-business-card">
