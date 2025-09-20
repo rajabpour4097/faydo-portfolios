@@ -1,0 +1,29 @@
+.shop-detail{max-width:980px;margin:24px auto;padding:0 16px;font-family:"IRANYekan", system-ui}
+.header-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.link{color:#3b82f6;text-decoration:none}
+.grid{display:grid;grid-template-columns:2fr 1fr;gap:16px}
+.info{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:14px}
+.info .row{margin:6px 0;color:#334155}
+.map{margin-top:8px}
+.package{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:14px;height:fit-content}
+.pkg-header{display:flex;justify-content:space-between;align-items:center}
+.tier{background:#4f46e5;color:#fff;border-radius:999px;padding:6px 12px;font-weight:600}
+.avg{color:#475569}
+.desc{margin:8px 0 6px;color:#475569}
+.perks{padding:0 18px;margin:0 0 8px}
+.rate{display:flex;align-items:center;gap:6px}
+.comments{margin-top:16px}
+.comments h2{font-size:1.2rem;margin-bottom:8px}
+.new-comment{display:flex;gap:8px;margin-bottom:12px}
+.new-comment textarea{flex:1;border:1px solid #e5e7eb;border-radius:10px;padding:10px}
+.new-comment button{background:#4f46e5;color:#fff;border:none;border-radius:10px;padding:10px 14px;cursor:pointer}
+.comments ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.comment{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:12px}
+.comment .meta{color:#334155;margin-bottom:6px}
+.comment .text{color:#475569;margin-bottom:6px}
+.comment .like{background:#f1f5f9;border:1px solid #e2e8f0;border-radius:999px;padding:6px 10px;cursor:pointer}
+.comment .like.liked{background:#fee2e2;border-color:#fecaca}
+
+@media(max-width: 900px){
+  .grid{grid-template-columns:1fr}
+}

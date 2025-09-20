@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage';
 import BusinessCardsPage from './pages/BusinessCardsPage';
 import RegistrationPage from './pages/RegistrationPage';
 import MultiStepForm from './components/MultiStepForm';
+import ShopDetailPage from './pages/ShopDetailPage';
 import './App.css';
 
 function App() {
@@ -15,7 +16,8 @@ function App() {
           <Route path="/register" element={<RegistrationPage />} />
           <Route path="/signup" element={<RegistrationPage />} />
           <Route path="/business-cards" element={<BusinessCardsPage />} />
-          <Route path="/shops" element={<div style={{padding: '50px', textAlign: 'center', fontFamily: 'Segoe UI'}}>صفحه کارت فروشگاه‌ها - به زودی...</div>} />
+          <Route path="/shops" element={<ShopDetailPage />} />
+          <Route path="/shops/:id" element={<ShopDetailPage />} />
           <Route path="/discount-info" element={<MultiStepForm />} />
           <Route path="/services" element={<div style={{padding: '50px', textAlign: 'center', fontFamily: 'Segoe UI'}}>صفحه کارت خدمات - به زودی...</div>} />
           <Route path="/restaurants" element={<RegistrationPage />} />
